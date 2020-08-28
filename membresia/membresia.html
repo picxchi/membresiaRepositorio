@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Membresía</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <link href="https://unpkg.com/primevue/resources/themes/saga-blue/theme.css " rel="stylesheet">
+  <link href="https://unpkg.com/primevue/resources/primevue.min.css " rel="stylesheet">
+  <link href="https://unpkg.com/primeicons/primeicons.css " rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://unpkg.com/primevue/components/inputtext/inputtext.umd.min.js"></script>
+  <script src="https://unpkg.com/primevue/components/button/button.umd.min.js"></script>
+  <script src="https://unpkg.com/primevue/components/password/password.umd.min.js"></script>
+  <script src="https://unpkg.com/primevue/components/calendar/calendar.umd.min.js"></script>
+  <script src="https://unpkg.com/primevue/components/dropdown/dropdown.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+  <div id="app">
+
+  </div>
+  <script>
+    const vTemplate = `
+
+    <div class="modal-dialog text-center">
+                  <div class= "col-sm-10" main-section>
+                  <div class= "modal-content">
+                  <form class="col-12">
+                  <div class="form-group" id="user-group">
+                  <p class="font-weight-bold">{{ msgTexto }}</p>
+                  </div>
+                  <div class="p-grid p-fluid">
+                  <div class="p-col-12 p-md-4">
+                  <div class="p-inputgroup">
+                      <span class="p-inputgroup-addon">
+                      <i class="pi pi-user"></i>
+                      </span>
+                      <InputText placeholder="Ingrese su nombre" />
+                      </div>
+
+                  <div class="p-inputgroup">
+                       <span class="p-inputgroup-addon">
+                       <i class="pi pi-user"></i>
+                       </span>
+                       <InputText placeholder="Ingrese  su apellido paterno" />
+                  </div>
+
+                  <div class="p-inputgroup">
+                       <span class="p-inputgroup-addon">
+                       <i class="pi pi-user"></i>
+                       </span>
+                       <InputText placeholder="Ingrese  su apellido materno" />
+                       </div>                       
+
+                  <div class="p-inputgroup">
+                       <span class="p-inputgroup-addon">
+                       <i class="pi pi-envelope"></i>
+                       </span>
+                       <InputText placeholder="Ingrese  su correo" />
+                       </div>
+
+                  <div class="p-inputgroup">
+                       <span class="p-inputgroup-addon">
+                       <i class="pi pi-envelope"></i>
+                       </span>
+                       <InputText placeholder="Confirme su correo" />
+                       </div>     
+
+                  <div class="p-inputgroup">
+                       <span class="p-inputgroup-addon">
+                       <i class="pi pi-mobile"></i>
+                       </span>
+                       <InputText placeholder="Ingrese su teléfono" />
+                       </div>
+
+                  <div class="p-inputgroup">
+                       <span class="p-inputgroup-addon">
+                       <i class="pi pi-mobile"></i>
+                       </span>
+                       <InputText placeholder="Ingrese su curp" />
+                       </div>               
+
+                     <div class="col-14">
+                       <a href="login.html">Ya tengo una cuenta</a>
+                     </div>
+                     <p-button label="Registrar" icon="pi pi-angle-right" class="p-button-raised p-button-rounded" />
+                     </form>
+                   </div>
+                   </div>
+              </div>
+              
+    `;
+    var vm = new Vue({
+      template: vTemplate,
+      components: {
+
+        'p-inputtext': inputtext,
+        'p-button': button,
+        'p-calendar': calendar,
+        'InputText': inputtext
+      },
+      data: {
+        msgTexto: "Membresía",
+        txtNombre: "",
+        cmdButton: "Registrar",
+        txtApellidos: "",
+        txtTel: "",
+        txtEmail: "",
+        txtPass: "",
+        txtPwd: "",
+        value: ''
+      },
+      methods: {
+        EnviarDatos() {
+          //window.alert("Hola" + this.txtNombre );
+          axios.post('http://localhost:3030/contacto', {
+            id: 3,
+            name: this.txtNombre,
+            Email: this.txtEmail,
+
+          })
+            .then(function (response) {
+
+              this.contactos = resp.data;
+              console.log(response);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        }
+      }
+    }).$mount('#app');
+  </script>
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <link href="https://unpkg.com/primevue/resources/themes/saga-blue/theme.css " rel="stylesheet">
+        <link href="https://unpkg.com/primevue/resources/primevue.min.css " rel="stylesheet">
+        <link href="https://unpkg.com/primeicons/primeicons.css " rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+      
+        <script src="https://unpkg.com/primevue/components/inputtext/inputtext.umd.min.js"></script>
+        <script src="https://unpkg.com/primevue/components/button/button.umd.min.js"></script>
+        <script src="https://unpkg.com/primevue/components/password/password.umd.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+        
+
+      <style>
+ body{
+    background-image: url(static/img/basilica.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+  
+  }
+
+.main-section{
+    margin:0 auto;
+    margin-top: 30%;
+    padding: 0;
+}
+.modal-content{
+    
+  background-color:whitesmoke;
+  opacity: .95;
+  padding: 0 20px;
+  box-shadow: 0px 0px 4px black;
+  height: auto;
+  margin: 50px;
+
+}
+      </style>
+
+      </head>
+    <body>
+        <div id="app">
+          
+          </div>
+          
+    <script>
+      const vTemplate = `
+                <div class="modal-dialog text-center">
+                <br>
+                <br>
+                <br>
+
+                  <div class= "col-sm-10" main-section>
+                   <div class= "modal-content">
+                   <br>
+                     <div class="col-12 user-img">
+                      <img src="static/img/218.png"/>
+                     </div>
+                     <form class="col-12">
+                       <div class="form-group" id="user-group">
+                       <p class="font-weight-bold">{{ msgTexto }}</p>
+                     </div>
+                     <div class="form-group">
+                       <i class="pi pi-user"></i>
+                       <p-inputtext type="text" icon="pi pi-user" v-model="txtEmail" placeholder="Escribe tu email" />
+                       
+                     </div>
+                     <div class="form-group">
+                       
+                       <i class="pi pi-lock"></i>
+                       <p-password type="password" v-model="value" placeholder="Password" /> 
+                     </div>
+                     <div class="col-14">
+                       <a href="membresia.html">Crear cuenta</a>
+                     </div>
+                     <div class="col-14">
+                     <p-button label="Entrar" icon="pi pi-sign-in" class="p-button-raised p-button-rounded" />
+                     </div>
+                     <br>
+                     </form>
+                   </div>
+                   </div>
+              </div>    
+        `;
+ 
+    var vm = new Vue({
+      template: vTemplate,
+      components: {
+    
+    'p-inputtext' : inputtext,
+    'p-button' : button,
+    'p-password' : password,
+    
+  },
+    data: {
+       msgTexto: "LOGIN",
+       txtNombre: "",
+       cmdButton : "Entrar",
+       txtEmail: "",
+       value: ''
+  },
+  }).$mount('#app');
+    </script>
+
+    </body>
+
+</html>
